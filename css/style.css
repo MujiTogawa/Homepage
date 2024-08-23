@@ -4,102 +4,242 @@
 }
 
 * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgb(1, 6, 47);
-    }
+html, body {
+  height: 100%; /* 确保 HTML 和 body 高度为 100% */
+  margin: 0;
+}
 
-    .anniu,
-    .anniu::after {
-      font-family: 'cyberpunk-regular';
-      width: 720px;
-      height: 80px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 60px;
-      line-height: 80px;
-      color: rgb(243, 239, 8);
-      cursor: pointer;
-      position: relative;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(1, 6, 47);
+  overflow-x: hidden; /* 防止水平滚动条出现 */
+}
 
-    .anniu::after {
-      content: 'Muji Togawa';
-      position: absolute;
-      top: 0;
-      left: 0;
-      text-shadow: -5px -2px 0 rgb(0, 183, 255),
-        5px 2px 0 rgb(0, 255, 115);
-      visibility: hidden;
-    }
+.canvas {
+  background: #000;
+}
 
-    .anniu:hover::after {
-      animation: san 1s;
-      animation-timing-function: steps(1, end);
-    }
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* 占满高度 */
+  width: 100%; /* 占满宽度 */
+  position: relative;
+  background-color: rgb(1, 6, 47); /* header背景颜色一致 */
+}
 
-    @keyframes san {
-      0% {
-        clip-path: inset(20% -5px 60% 0);
-        transform: translate(-6px, 5px);
-        visibility: visible;
-      }
+.header-content,
+.header-content::after {
+  font-family: 'cyberpunk-regular';
+  width: 700px;
+  height: 80px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 75px;
+  line-height: 80px;
+  color: rgb(243, 239, 8);
+  cursor: pointer;
+  position: relative;
+}
 
-      10% {
-        clip-path: inset(50% -5px 30% 0);
-        transform: translate(6px, -5px);
-      }
+.header-content::after {
+  content: 'Muji Togawa';
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-shadow: -5px -2px 0 rgb(0, 183, 255),
+    5px 2px 0 rgb(0, 255, 115);
+  visibility: hidden;
+}
 
-      20% {
-        clip-path: inset(20% -5px 60% 0);
-        transform: translate(5px, 0px);
-      }
+.header-content:hover::after {
+  animation: san 1s;
+  animation-timing-function: steps(1, end);
+}
 
-      30% {
-        clip-path: inset(80% -5px 5% 0);
-        transform: translate(-8px, 5px);
-      }
+@keyframes san {
+  0% {
+    clip-path: inset(20% -5px 60% 0);
+    transform: translate(-7px, 6px);
+    visibility: visible;
+  }
 
-      40% {
-        clip-path: inset(0 -5px 80% 0);
-        transform: translate(-4px, -3px);
-      }
+  10% {
+    clip-path: inset(50% -5px 30% 0);
+    transform: translate(7px, -6px);
+  }
 
-      50% {
-        clip-path: inset(50% -5px 30% 0);
-        transform: translate(-6px, -5px);
-      }
+  20% {
+    clip-path: inset(20% -5px 60% 0);
+    transform: translate(6px, 0px);
+  }
 
-      60% {
-        clip-path: inset(80% -5px 5% 0);
-        transform: translate(-7px, 5px);
-      }
+  30% {
+    clip-path: inset(80% -5px 5% 0);
+    transform: translate(-9px, 6px);
+  }
 
-      70% {
-        clip-path: inset(0 -5px 80% 0);
-        transform: translate(3px, 6px);
-      }
+  40% {
+    clip-path: inset(0 -5px 80% 0);
+    transform: translate(-5px, -4px);
+  }
 
-      80% {
-        clip-path: inset(50% -5px 30% 0);
-        transform: translate(5px, 5px);
-      }
+  50% {
+    clip-path: inset(50% -5px 30% 0);
+    transform: translate(-7px, -6px);
+  }
 
-      90% {
-        clip-path: inset(20% -5px 60% 0);
-        transform: translate(6px, -5px);
-      }
+  60% {
+    clip-path: inset(80% -5px 5% 0);
+    transform: translate(-9px, 6px);
+  }
 
-      100% {
-        clip-path: inset(0 -5px 80% 0);
-        transform: translate(1px, 5px);
-      }
-    }
+  70% {
+    clip-path: inset(0 -5px 80% 0);
+    transform: translate(4px, 8px);
+  }
+
+  80% {
+    clip-path: inset(50% -5px 30% 0);
+    transform: translate(5px, 5px);
+  }
+
+  90% {
+    clip-path: inset(20% -5px 60% 0);
+    transform: translate(6px, -5px);
+  }
+
+  100% {
+    clip-path: inset(0 -5px 80% 0);
+    transform: translate(1px, 5px);
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px; /* arrow距底部距离 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  border: solid #ffffff;
+  border-width: 0px 4px 4px 0px;
+  transform: rotate(45deg);
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  40% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  60% {
+    transform: translateY(-5px) rotate(45deg);
+  }
+}
+
+main.content {
+  background-color: rgb(1, 6, 47);
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  margin-top: 7%;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.c1 {
+  text-align: center;
+  width: 360px;
+  height: 360px;
+  border: 4px solid #6495ED;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  display: block;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);/*从0度开始*/
+  }
+  100% {
+    transform: rotateZ(360deg);/*360度结束*/
+  }
+}
+
+.project-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;  /* 强制所有card在同一行上 */
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.project-card {
+  width: 23%;
+  padding: 20px;
+  border-radius: 5px;
+  color: white;
+  margin: 10px;
+  display: flex;  
+  flex-direction: column; 
+  transition: all .2s;
+}
+
+a {
+  text-decoration: none; 
+  outline: none; 
+  color: white; 
+  }
+
+.project-card:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 26px 40px -24px rgb(0 36 100 / 50%);
+}
+
+.project-card h2 {
+  margin-top: 0;
+  font-size: 24px;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.blue { background-color: #5DADE2; }
+.pink { background-color: #EC7063; }
+.gray { background-color: #85929E; }
+.green { background-color: #52BE80; }
+
+.project-card h3 {
+  font-size: 18px;
+  margin-top: 0;
+  text-decoration: none;
+}
+
+button {
+  background-color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5%;
+}
